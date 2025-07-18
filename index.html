@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step One | World-Class Digital Transformation</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Step One is a premier digital agency specializing in rapid, world-class digital transformation for startups and established businesses. Our 3-month program covers brand identity, web development, UI/UX, marketing, and more.">
+    <meta name="keywords" content="digital transformation, web development, startup agency, UI/UX design, branding, SEO, digital marketing, 3-month plan">
+    <meta name="author" content="Step One Digital">
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- 3D Model Viewer -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
+    
+    <!-- Lottie Player -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+    <style>
+        /* ------------------------- */
+        /* --- 1. Root Variables & Global Styles --- */
+        /* ------------------------- */
+        :root {
+            --light-bg: #f5f7fa;
+            --light-text: #2c3e50;
+            --light-card-bg: #ffffff;
+            --light-shadow: rgba(44, 62, 80, 0.1);
+            --light-accent: #8e44ad; /* Wisteria */
+            --light-accent-glow: #9b59b6; /* Amethyst */
+            --light-gradient: linear-gradient(135deg, #a8e0ff 0%, #fbc2eb 100%);
+            
+            --dark-bg: #0d0c22;
+            --dark-text: #ecf0f1;
+            --dark-card-bg: #1a163a;
+            --dark-shadow: rgba(0, 0, 0, 0.4);
+            --dark-accent: #9b59b6; /* Amethyst */
+            --dark-accent-glow: #00f2fe; /* Neon Cyan */
+            --dark-gradient: linear-gradient(135deg, #1f0c2e 0%, #0d0c22 74%);
+
+            --font-family: 'Poppins', sans-serif;
+            --border-radius-sm: 8px;
+            --border-radius-md: 15px;
+            --border-radius-lg: 25px;
+            --transition-speed: 0.4s;
+        }
+
+        [data-theme="light"] {
+            --bg-color: var(--light-bg);
+            --text-color: var(--light-text);
+            --card-bg-color: var(--light-card-bg);
+            --shadow-color: var(--light-shadow);
+            --primary-color: var(--light-accent);
+            --glow-color: var(--light-accent-glow);
+            --section-gradient: var(--light-gradient);
+            --border-color: #e0e0e0;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: var(--dark-bg);
+            --text-color: var(--dark-text);
+            --card-bg-color: var(--dark-card-bg);
+            --shadow-color: var(--dark-shadow);
+            --primary-color: var(--dark-accent);
+            --glow-color: var(--dark-accent-glow);
+            --section-gradient: var(--dark-gradient);
+            --border-color: #2c2854;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        a, button {
+            cursor: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* ------------------------- */
+        /* --- 2. Custom Cursor --- */
+        /* ------------------------- */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s ease-out, opacity 0.2s ease-out, width 0.3s ease, height 0.3s ease;
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--glow-color);
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary-color);
+            opacity: 0.7;
+        }
+        .cursor-grow {
+            transform: scale(2.5) translate(-20%, -20%);
+            border-color: var(--glow-color);
+            background-color: rgba(0, 242, 254, 0.1);
+        }
+        .cursor-hidden {
+            opacity: 0;
+            transform: scale(0) translate(-50%, -50%);
+        }
+
+        /* ------------------------- */
+        /* --- 3. Header & Navigation --- */
+        /* ------------------------- */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+        }
+        .main-header.scrolled {
+            padding: 1rem 2rem;
+            background-color: rgba(13, 12, 34, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        .logo span {
+            color: var(--primary-color);
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .theme-toggle:hover {
+            transform: rotate(180deg);
+            color: var(--primary-color);
+        }
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            z-index: 1001;
+        }
+
+        /* ------------------------- */
+        /* --- 4. Hero Section --- */
+        /* ------------------------- */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        .animated-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(315deg, #00f2fe, #4c00ff, #8a2be2, #0d0c22);
+            background-size: 400% 400%;
+            animation: gradient-animation 20s ease infinite;
+            z-index: -1;
+        }
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 .char {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(50px) scale(0.5) rotate(45deg);
+            background: linear-gradient(90deg, #00f2fe, #f8f9fa, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: text-shine 5s linear infinite, hero-char-in 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        @keyframes hero-char-in {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotate(0);
+            }
+        }
+        @keyframes text-shine {
+            to { background-position: -200% center; }
+        }
+        .hero-subheading {
+            font-size: 1.3rem;
+            margin: 1.5rem 0;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.2s forwards;
+            line-height: 1.7;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.5s forwards;
+            box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+        }
+        .cta-button:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 10px 25px rgba(155, 89, 182, 0.5);
+        }
+        .hero-visuals {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            pointer-events: none;
+        }
+        .hero-lottie {
+            width: 300px; height: 300px;
+            opacity: 0.6;
+            animation: fadeInLeft 1.5s ease-out 0.5s forwards;
+        }
+        .hero-3d-model {
+            width: 400px; height: 400px;
+            opacity: 0.8;
+            animation: fadeInRight 1.5s ease-out 0.5s forwards;
+        }
+        .scroll-down-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            color: var(--text-color);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 2s forwards;
+        }
+        .scroll-down-indicator i {
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+
+        /* --- Section Helpers --- */
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 5rem auto;
+            line-height: 1.7;
+            opacity: 0.8;
+        }
+
+        /* ------------------------- */
+        /* --- 5. Services Section --- */
+        /* ------------------------- */
+        .services {
+            background: var(--section-gradient);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+        .service-card {
+            background: var(--card-bg-color);
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 4px 15px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+        .service-card .service-image-container {
+            height: 200px;
+            overflow: hidden;
+        }
+        .service-card .service-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .service-card:hover .service-image {
+            transform: scale(1.1);
+        }
+        .service-card-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .service-card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        .service-card-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .service-card-link {
+            display: inline-block;
+            font-weight: 600;
+            color: var(--glow-color);
+            text-decoration: none;
+            align-self: flex-start;
+        }
+        .service-card-link i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        .service-card-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* ------------------------- */
+        /* --- 6. Portfolio Section --- */
+        /* ------------------------- */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        .portfolio-filters button {
+            background: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .portfolio-filters button:hover, .portfolio-filters button.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .portfolio-item {
+            position: relative;
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+        .portfolio-item.hidden {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(13, 12, 34, 0.9) 0%, rgba(13, 12, 34, 0) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+        }
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        .portfolio-overlay h3, .portfolio-overlay p {
+            color: #fff;
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.1s;
+        }
+        .portfolio-item:hover .portfolio-overlay h3,
+        .portfolio-item:hover .portfolio-overlay p {
+            transform: translateY(0);
+        }
+        .portfolio-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .portfolio-overlay p {
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* ------------------------- */
+        /* --- 7. Plan Section --- */
+        /* ------------------------- */
+        .plan {
+            background-color: var(--card-bg-color);
+        }
+        .plan-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+        .plan-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        .plan-card:hover {
+            transform: scale(1.05) perspective(1000px) rotateY(var(--rotateY)) rotateX(var(--rotateX));
+            border-color: var(--primary-color);
+        }
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at var(--x) var(--y), rgba(155, 89, 182, 0.2), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+        .plan-card:hover::before {
+            opacity: 1;
+        }
+        .plan-month {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .plan-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .plan-card ul {
+            list-style: none;
+        }
+        .plan-card li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .plan-card li i {
+            color: var(--glow-color);
+            margin-right: 1rem;
+        }
+
+        /* ------------------------- */
+        /* --- 8. Process Section (Timeline) --- */
+        /* ------------------------- */
+        .process {
+            background: var(--section-gradient);
+        }
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            z-index: 1;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -14px;
+            background-color: var(--bg-color);
+            border: 4px solid var(--primary-color);
+            top: 30px;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        .timeline-item.left {
+            left: 0;
+        }
+        .timeline-item.right {
+            left: 50%;
+        }
+        .timeline-item.right::after {
+            left: -12px;
+        }
+        .timeline-content {
+            padding: 2rem;
+            background-color: var(--card-bg-color);
+            position: relative;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+        .timeline-content .step {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--glow-color);
+            margin-bottom: 0.5rem;
+        }
+        .timeline-content h3 {
+            font-size: 1.5rem;
+        }
+
+        /* ------------------------- */
+        /* --- 9. Testimonials Section --- */
+        /* ------------------------- */
+        .testimonials {
+            position: relative;
+        }
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .testimonial-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 2rem;
+            text-align: center;
+        }
+        .testimonial-quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+        .testimonial-quote::before, .testimonial-quote::after {
+            content: '"';
+            color: var(--primary-color);
+            font-size: 2rem;
+            font-weight: 900;
+        }
+        .testimonial-author {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .testimonial-author span {
+            display: block;
+            font-weight: 400;
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+            left: -30px;
+            width: calc(100% + 60px);
+        }
+        .slider-btn {
+            background: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .slider-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        /* ------------------------- */
+        /* --- 10. Tech Stack Section --- */
+        /* ------------------------- */
+        .tech-stack {
+            background: var(--section-gradient);
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 2.5rem;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .tech-item {
+            text-align: center;
+            opacity: 0.7;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+        .tech-item:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+        .tech-item i {
+            font-size: 4rem;
+        }
+        .tech-item p {
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* ------------------------- */
+        /* --- 11. "What's Next?" Section --- */
+        /* ------------------------- */
+        .next-steps {
+            text-align: center;
+        }
+        .next-steps-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .next-steps-model {
+            width: 100%;
+            max-width: 450px;
+            height: 450px;
+            margin-bottom: 2rem;
+        }
+
+        /* ------------------------- */
+        /* --- 12. FAQ Section --- */
+        /* ------------------------- */
+        .faq {
+            background: var(--card-bg-color);
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 1.5rem 1rem;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+            color: var(--primary-color);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease;
+            padding: 0 1rem;
+        }
+        .faq-answer p {
+            padding-bottom: 1.5rem;
+            line-height: 1.7;
+            opacity: 0.8;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px; /* Adjust if answers are longer */
+        }
+
+        /* ------------------------- */
+        /* --- 13. Footer --- */
+        /* ------------------------- */
+        .main-footer {
+            background-color: var(--dark-bg);
+            color: var(--light-bg);
+            padding: 5rem 0 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        .social-links a {
+            color: var(--light-bg);
+            font-size: 1.8rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: scale(1.2) translateY(-3px);
+        }
+        .copyright {
+            margin-top: 3rem;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* ------------------------- */
+        /* --- 14. Utility & Animation Classes --- */
+        /* ------------------------- */
+        .hidden-anim {
+            opacity: 0;
+            filter: blur(5px);
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, filter 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .visible-anim {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(100px);
+            transition: all 0.4s ease;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* ------------------------- */
+        /* --- 15. Responsive Design --- */
+        /* ------------------------- */
+        @media (max-width: 992px) {
+            .hero-visuals { display: none; }
+            .plan-grid { grid-template-columns: 1fr; }
+            .timeline::after { left: 30px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item.right { left: 0%; }
+            .timeline-item::after { left: 16px; }
+        }
+
+        @media (max-width: 768px) {
+            body { cursor: auto; }
+            .cursor-dot, .cursor-outline { display: none; }
+            a, button { cursor: pointer; }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--dark-bg);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+                box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+                gap: 3rem;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links a { font-size: 1.2rem; }
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+            section { padding: 80px 0; }
+            .section-title { font-size: 2.5rem; }
+            .hero h1 { font-size: clamp(2.5rem, 10vw, 3.5rem); }
+            .hero-subheading { font-size: 1.1rem; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .slider-nav {
+                top: auto;
+                bottom: -20px;
+                transform: translateY(0);
+                width: 100%;
+                left: 0;
+                justify-content: center;
+                gap: 1rem;
+            }
+            .slider-btn { width: 45px; height: 45px; }
+            .testimonial-slide { padding: 1rem 0; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 1rem; }
+            .portfolio-filters { gap: 0.5rem; }
+            .portfolio-filters button { padding: 0.4rem 1rem; font-size: 0.9rem; }
+            .plan-card { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Header -->
+    <header class="main-header" id="main-header">
+        <div class="navbar container">
+            <a href="#home" class="logo">Step<span>One</span>.</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#plan">The Plan</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
+                    <i class="fa-solid fa-circle-half-stroke"></i>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Open menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="animated-bg"></div>
+            <div class="hero-visuals">
+                <div class="hero-lottie">
+                     <lottie-player src="https://lottie.host/e2d7e4f9-251f-4318-8680-1a3b83984534/GkG5XWlTyl.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
+                </div>
+                <div class="hero-3d-model">
+                    <model-viewer id="hero-model" src="https://cdn.glitch.global/d83d0290-cefb-4c1a-9657-9a5a3a9af0a8/abstract_shape.glb?v=1680190890533" 
+                        ar ar-modes="webxr scene-viewer quick-look" 
+                        camera-controls-enabled="false" 
+                        auto-rotate 
+                        auto-rotate-delay="0"
+                        rotation-per-second="10deg"
+                        camera-orbit="0deg 75deg 105%"
+                        shadow-intensity="1" 
+                        alt="A 3D abstract rotating shape"
+                        style="width:100%; height:100%;">
+                    </model-viewer>
+                </div>
+            </div>
+            <div class="hero-content container">
+                <h1 class="animate-text">Your Digital Evolution Starts Here.</h1>
+                <p class="hero-subheading">We are Step One, a creative digital agency dedicated to launching startups into their next orbit with our intensive 3-month transformation program.</p>
+                <a href="#next-steps" class="cta-button">Start Your Journey</a>
+            </div>
+            <a href="#services" class="scroll-down-indicator" aria-label="Scroll down">
+                <i class="fa-solid fa-chevron-down"></i>
+            </a>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <div class="container">
+                <h2 class="section-title hidden-anim">Our Core Services</h2>
+                <p class="section-subtitle hidden-anim">We provide a comprehensive suite of services designed to build, launch, and grow your digital presence from the ground up.</p>
+                <div class="services-grid">
+                    <!-- Service 1 -->
+                    <div class="service-card hidden-anim">
+                        <div class="service-image-container">
+                            <img src="photos/service-1.jpg" alt="Brand Identity Design" class="service-image">
+                        </div>
+                        <div class="service-card-content">
+                            <h3>Brand Identity & Strategy</h3>
+                            <p>Crafting a memorable brand that resonates with your audience, from logo design to a complete brand style guide.</p>
+                            <a href="#contact" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                     <!-- Service 2 -->
+                    <div class="service-card hidden-anim" style="transition-delay: 0.1s;">
+                        <div class="service-image-container">
+                            <img src="photos/service-2.jpg" alt="Web Development" class="service-image">
+                        </div>
+                        <div class="service-card-content">
+                            <h3>Web Development</h3>
+                            <p>Building fast, modern, and responsive websites using cutting-edge technologies that are optimized for conversion.</p>
+                             <a href="#contact" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                     <!-- Service 3 -->
+                    <div class="service-card hidden-anim" style="transition-delay: 0.2s;">
+                        <div class="service-image-container">
+                            <img src="photos/service-3.jpg" alt="UI/UX Design" class="service-image">
+                        </div>
+                        <div class="service-card-content">
+                            <h3>UI/UX Design</h3>
+                            <p>Designing intuitive, beautiful, and user-centric interfaces for web and mobile applications that delight your users.</p>
+                             <a href="#contact" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                     <!-- Service 4 -->
+                    <div class="service-card hidden-anim" style="transition-delay: 0.3s;">
+                        <div class="service-image-container">
+                            <img src="photos/service-4.jpg" alt="Digital Marketing" class="service-image">
+                        </div>
+                        <div class="service-card-content">
+                            <h3>Digital Marketing</h3>
+                            <p>Implementing data-driven marketing campaigns across multiple channels to grow your reach and customer base.</p>
+                             <a href="#contact" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                     <!-- Service 5 -->
+                    <div class="service-card hidden-anim" style="transition-delay: 0.4s;">
+                        <div class="service-image-container">
+                            <img src="photos/service-5.jpg" alt="SEO Optimization" class="service-image">
+                        </div>
+                        <div class="service-card-content">
+                            <h3>SEO Optimization</h3>
+                            <p>Boosting your visibility on search engines to attract high-quality organic traffic and dominate search results.</p>
+                             <a href="#contact" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                     <!-- Service 6 -->
+                    <div class="service-card hidden-anim" style="transition-delay: 0.5s;">
+                        <div class="service-image-container">
+                            <img src="photos/service-6.jpg" alt="Content Creation" class="service-image">
+                        </div>
+                        <div class="service-card-content">
+                            <h3>Content Creation</h3>
+                            <p>Producing engaging content, from blog posts to video scripts, that tells your story and builds a loyal community.</p>
+                            <a href="#contact" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Portfolio Section -->
+        <section class="portfolio" id="portfolio">
+            <div class="container">
+                <h2 class="section-title hidden-anim">Our Recent Work</h2>
+                <p class="section-subtitle hidden-anim">We're proud of the work we do. Here are a few examples of how we've helped businesses like yours succeed.</p>
+                <div class="portfolio-filters hidden-anim">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="web">Web Development</button>
+                    <button class="filter-btn" data-filter="branding">Branding</button>
+                    <button class="filter-btn" data-filter="marketing">Marketing</button>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item hidden-anim" data-category="web">
+                        <img src="photos/Project-zero.jpg" alt="Project One">
+                        <div class="portfolio-overlay">
+                            <h3>Fintech App</h3>
+                            <p>Web Development</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item hidden-anim" data-category="branding" style="transition-delay: 0.1s;">
+                        <img src="photos/Project-1.jpg" alt="Project Two">
+                        <div class="portfolio-overlay">
+                            <h3>EcoBrand Rebrand</h3>
+                            <p>Branding</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item hidden-anim" data-category="marketing" style="transition-delay: 0.2s;">
+                        <img src="photos/Project-2.jpg" alt="Project Three">
+                        <div class="portfolio-overlay">
+                            <h3>SaaS Launch Campaign</h3>
+                            <p>Marketing</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item hidden-anim" data-category="web" style="transition-delay: 0.3s;">
+                        <img src="photos/Project-3.jpg" alt="Project Four">
+                        <div class="portfolio-overlay">
+                            <h3>E-commerce Platform</h3>
+                            <p>Web Development</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3-Month Plan Section -->
+        <section class="plan" id="plan">
+            <div class="container">
+                <h2 class="section-title hidden-anim">The 3-Month Transformation</h2>
+                <p class="section-subtitle hidden-anim">Our intensive program is structured for maximum impact and velocity. We turn ideas into reality in just one quarter.</p>
+                <div class="plan-grid">
+                    <div class="plan-card hidden-anim interactive-card">
+                        <p class="plan-month">Month 1</p>
+                        <h3>Discovery & Strategy</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-check-circle"></i> Deep Dive Workshops</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Brand & Market Analysis</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Tech Stack Finalization</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Project Roadmap & KPIs</li>
+                        </ul>
+                    </div>
+                    <div class="plan-card hidden-anim interactive-card" style="transition-delay: 0.2s;">
+                        <p class="plan-month">Month 2</p>
+                        <h3>Design & Development</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-check-circle"></i> UI/UX Prototyping & Testing</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Agile Development Sprints</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Core Content Creation</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Weekly Progress Demos</li>
+                        </ul>
+                    </div>
+                    <div class="plan-card hidden-anim interactive-card" style="transition-delay: 0.4s;">
+                        <p class="plan-month">Month 3</p>
+                        <h3>Launch & Growth</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-check-circle"></i> Final QA & A/B Testing</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Scalable Platform Deployment</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Initial Marketing Push</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Performance Analytics & Report</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Process Section -->
+        <section class="process" id="process">
+            <div class="container">
+                <h2 class="section-title hidden-anim">How We Work</h2>
+                <p class="section-subtitle hidden-anim">Our process is transparent, collaborative, and built for results. We keep you in the loop every step of the way.</p>
+                <div class="timeline">
+                    <div class="timeline-item left hidden-anim">
+                        <div class="timeline-content">
+                            <span class="step">Step 1</span>
+                            <h3>Initial Consultation</h3>
+                            <p>We start with a free, no-obligation call to understand your vision, goals, and challenges.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right hidden-anim">
+                        <div class="timeline-content">
+                             <span class="step">Step 2</span>
+                            <h3>Proposal & Agreement</h3>
+                            <p>We deliver a detailed proposal outlining the scope, timeline, and investment. Once agreed, we're ready to start.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left hidden-anim">
+                        <div class="timeline-content">
+                             <span class="step">Step 3</span>
+                            <h3>Project Kickoff</h3>
+                            <p>Our teams align in a kickoff meeting, establishing communication channels and setting the stage for the project.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right hidden-anim">
+                        <div class="timeline-content">
+                            <span class="step">Step 4</span>
+                            <h3>Execution & Delivery</h3>
+                            <p>We execute the 3-month plan, providing regular updates and demos before the final launch and handover.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <h2 class="section-title hidden-anim">What Our Clients Say</h2>
+                <div class="testimonial-slider hidden-anim">
+                    <div class="testimonial-wrapper">
+                        <div class="testimonial-slide">
+                            <p class="testimonial-quote">Step One didn't just build us a website; they built our digital foundation. Their speed and quality are unmatched.</p>
+                            <p class="testimonial-author">Jane Doe <span>CEO, Innovatech</span></p>
+                        </div>
+                        <div class="testimonial-slide">
+                            <p class="testimonial-quote">The 3-month program was intense but incredibly rewarding. Our market presence has skyrocketed since the launch.</p>
+                            <p class="testimonial-author">John Smith <span>Founder, NextGen Solutions</span></p>
+                        </div>
+                        <div class="testimonial-slide">
+                            <p class="testimonial-quote">The team's creativity and technical expertise are top-notch. They are true partners in growth.</p>
+                            <p class="testimonial-author">Emily White <span>Marketing Director, HealthCo</span></p>
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section class="tech-stack" id="tech-stack">
+            <div class="container">
+                <h2 class="section-title hidden-anim">Our Technology Stack</h2>
+                <p class="section-subtitle hidden-anim">We use modern, scalable, and robust technologies to ensure your product is future-proof and performs at the highest level.</p>
+                <div class="tech-grid hidden-anim">
+                    <div class="tech-item"><i class="fab fa-react"></i><p>React</p></div>
+                    <div class="tech-item"><i class="fab fa-node-js"></i><p>Node.js</p></div>
+                    <div class="tech-item"><i class="fab fa-vuejs"></i><p>Vue.js</p></div>
+                    <div class="tech-item"><i class="fab fa-python"></i><p>Python</p></div>
+                    <div class="tech-item"><i class="fab fa-figma"></i><p>Figma</p></div>
+                    <div class="tech-item"><i class="fab fa-aws"></i><p>AWS</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What's Next? Section -->
+        <section class="next-steps" id="next-steps">
+            <div class="container next-steps-content">
+                 <h2 class="section-title hidden-anim">Ready for Your First Step?</h2>
+                 <p class="section-subtitle hidden-anim">Your journey from a promising startup to an industry leader begins here. Let's build something incredible together. Schedule a free consultation today.</p>
+                 
+                  
+                  
+
+                 <a href="mailto:hello@steponedigital.com" class="cta-button hidden-anim">Let's Discuss Your Project</a>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq" id="faq">
+            <div class="container">
+                <h2 class="section-title hidden-anim">Frequently Asked Questions</h2>
+                <div class="faq-container hidden-anim">
+                    <div class="faq-item">
+                        <button class="faq-question">What kind of companies do you work with? <i class="fas fa-chevron-down"></i></button>
+                        <div class="faq-answer">
+                            <p>We specialize in working with ambitious startups and small-to-medium-sized businesses that are ready for rapid digital growth. However, our principles and processes can be adapted for larger enterprises seeking agile transformation.</p>
+                        </div>
+                    </div>
+                     <div class="faq-item">
+                        <button class="faq-question">Is the 3-month timeline strict? <i class="fas fa-chevron-down"></i></button>
+                        <div class="faq-answer">
+                            <p>The 3-month program is our flagship offering, designed for speed and impact. For projects with a much larger scope or unique requirements, we can create a custom timeline. The initial consultation will help us determine the best fit for you.</p>
+                        </div>
+                    </div>
+                     <div class="faq-item">
+                        <button class="faq-question">What happens after the 3 months? <i class="fas fa-chevron-down"></i></button>
+                        <div class="faq-answer">
+                            <p>After the initial launch, we offer ongoing support and growth packages. These can include website maintenance, continuous SEO, content marketing, and performance analytics to ensure your digital presence continues to thrive.</p>
+                        </div>
+                    </div>
+                     <div class="faq-item">
+                        <button class="faq-question">How much does the program cost? <i class="fas fa-chevron-down"></i></button>
+                        <div class="faq-answer">
+                            <p>Investment varies based on the specific services required. After our initial consultation, we provide a detailed, transparent proposal with a full cost breakdown. We focus on delivering immense value and a clear ROI.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="main-footer" id="contact">
+        <div class="container footer-content">
+            <a href="#home" class="logo">Step<span>One</span>.</a>
+            <p>Let's build the future, together.</p>
+            <div class="social-links">
+                <a href="#" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">© 2024 Step One. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const App = {
+            // --- INITIALIZATION ---
+            init() {
+                this.cacheDOMElements();
+                this.loadTheme();
+                this.setupEventListeners();
+                this.initIntersectionObserver();
+                this.initTextAnimations();
+                this.initTestimonialSlider();
+            },
+
+            // --- CACHE DOM ELEMENTS ---
+            cacheDOMElements() {
+                this.ui = {
+                    cursorDot: document.querySelector('.cursor-dot'),
+                    cursorOutline: document.querySelector('.cursor-outline'),
+                    interactiveElements: document.querySelectorAll('a, button, .interactive-card, .service-card, model-viewer, .portfolio-item, .faq-question, .tech-item'),
+                    themeToggle: document.getElementById('theme-toggle'),
+                    htmlEl: document.documentElement,
+                    hamburger: document.getElementById('hamburger'),
+                    navLinks: document.getElementById('nav-links'),
+                    header: document.getElementById('main-header'),
+                    animatedElements: document.querySelectorAll('.hidden-anim'),
+                    heroModel: document.getElementById('hero-model'),
+                    planCards: document.querySelectorAll('.plan-card'),
+                    interactiveCards: document.querySelectorAll('.interactive-card'),
+                    animTextElements: document.querySelectorAll('.animate-text'),
+                    backToTopButton: document.getElementById('back-to-top'),
+                    // Portfolio
+                    filterButtons: document.querySelectorAll('.filter-btn'),
+                    portfolioItems: document.querySelectorAll('.portfolio-item'),
+                    // Testimonials
+                    sliderWrapper: document.querySelector('.testimonial-wrapper'),
+                    sliderPrevBtn: document.querySelector('.prev-btn'),
+                    sliderNextBtn: document.querySelector('.next-btn'),
+                    slides: document.querySelectorAll('.testimonial-slide'),
+                    // FAQ
+                    faqItems: document.querySelectorAll('.faq-item'),
+                    // Nav
+                    allNavLinks: document.querySelectorAll('.nav-links a'),
+                };
+                this.slider = {
+                    currentIndex: 0,
+                    totalSlides: this.ui.slides ? this.ui.slides.length : 0,
+                    autoplayInterval: null
+                };
+            },
+
+            // --- EVENT LISTENERS ---
+            setupEventListeners() {
+                // Window events
+                window.addEventListener('mousemove', this.handleMouseMove.bind(this));
+                window.addEventListener('scroll', this.handleScroll.bind(this), { passive: true });
+
+                // Body events for cursor
+                document.body.addEventListener('mouseleave', this.handleMouseLeaveBody.bind(this));
+                document.body.addEventListener('mouseenter', this.handleMouseEnterBody.bind(this));
+
+                // UI Element events
+                this.ui.themeToggle.addEventListener('click', this.toggleTheme.bind(this));
+                this.ui.hamburger.addEventListener('click', this.toggleNav.bind(this));
+                this.ui.backToTopButton.addEventListener('click', this.scrollToTop);
+                
+                this.ui.allNavLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (this.ui.navLinks.classList.contains('active')) {
+                            this.ui.navLinks.classList.remove('active');
+                        }
+                    });
+                });
+
+                // Interactive elements for cursor
+                this.ui.interactiveElements.forEach(el => {
+                    el.addEventListener('mouseenter', () => this.ui.cursorOutline.classList.add('cursor-grow'));
+                    el.addEventListener('mouseleave', () => this.ui.cursorOutline.classList.remove('cursor-grow'));
+                });
+
+                // Card effects
+                this.ui.planCards.forEach(card => card.addEventListener('mousemove', this.handleCardGlow.bind(this)));
+                this.ui.interactiveCards.forEach(card => card.addEventListener('mousemove', this.handleCardTilt.bind(this)));
+                this.ui.interactiveCards.forEach(card => card.addEventListener('mouseleave', this.resetCardTilt.bind(this)));
+
+                // Portfolio filter
+                this.ui.filterButtons.forEach(button => button.addEventListener('click', this.filterPortfolio.bind(this)));
+
+                // Testimonial slider
+                if(this.ui.sliderPrevBtn) {
+                    this.ui.sliderPrevBtn.addEventListener('click', () => {
+                        this.moveSlide('prev');
+                        this.resetSliderAutoplay();
+                    });
+                }
+                if(this.ui.sliderNextBtn) {
+                    this.ui.sliderNextBtn.addEventListener('click', () => {
+                        this.moveSlide('next');
+                        this.resetSliderAutoplay();
+                    });
+                }
+                
+                // FAQ Accordion
+                this.ui.faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question');
+                    question.addEventListener('click', () => {
+                         const wasActive = item.classList.contains('active');
+                         this.ui.faqItems.forEach(i => i.classList.remove('active'));
+                         if (!wasActive) {
+                            item.classList.add('active');
+                         }
+                    });
+                });
+            },
+
+            // --- FEATURE IMPLEMENTATIONS ---
+
+            // 1. Custom Cursor
+            handleMouseMove(e) {
+                if (window.innerWidth < 768) return;
+                const { clientX, clientY } = e;
+                this.ui.cursorDot.style.left = `${clientX}px`;
+                this.ui.cursorDot.style.top = `${clientY}px`;
+                this.ui.cursorOutline.animate({
+                    left: `${clientX}px`,
+                    top: `${clientY}px`
+                }, { duration: 500, fill: "forwards" });
+            },
+            handleMouseLeaveBody() {
+                if (window.innerWidth < 768) return;
+                this.ui.cursorDot.classList.add('cursor-hidden');
+                this.ui.cursorOutline.classList.add('cursor-hidden');
+            },
+            handleMouseEnterBody() {
+                if (window.innerWidth < 768) return;
+                this.ui.cursorDot.classList.remove('cursor-hidden');
+                this.ui.cursorOutline.classList.remove('cursor-hidden');
+            },
+
+            // 2. Theme Toggle
+            toggleTheme() {
+                const currentTheme = this.ui.htmlEl.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                this.ui.htmlEl.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            },
+            loadTheme() {
+                const savedTheme = localStorage.getItem('theme') || 'dark';
+                this.ui.htmlEl.setAttribute('data-theme', savedTheme);
+            },
+
+            // 3. Mobile Nav
+            toggleNav() {
+                this.ui.navLinks.classList.toggle('active');
+            },
+
+            // 4. Scroll Handling
+            handleScroll() {
+                const scrollY = window.scrollY;
+                // Header scroll effect
+                this.ui.header.classList.toggle('scrolled', scrollY > 50);
+                
+                // Back to top button visibility
+                this.ui.backToTopButton.classList.toggle('visible', scrollY > 300);
+
+                // 3D Model scroll interaction
+                if (this.ui.heroModel && scrollY < window.innerHeight) {
+                    const scrollFraction = scrollY / window.innerHeight;
+                    const orbitAngle = 90 * scrollFraction;
+                    this.ui.heroModel.cameraOrbit = `${orbitAngle}deg 75deg 105%`;
+                }
+            },
+            
+            scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            },
+
+            // 5. Intersection Observer for Animations
+            initIntersectionObserver() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible-anim');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                this.ui.animatedElements.forEach(el => observer.observe(el));
+            },
+            
+            // 6. Text Animation
+            initTextAnimations() {
+                this.ui.animTextElements.forEach(el => {
+                    const text = el.textContent;
+                    el.innerHTML = '';
+                    text.split('').forEach((char, index) => {
+                        const span = document.createElement('span');
+                        span.className = 'char';
+                        span.textContent = char === ' ' ? '\u00A0' : char;
+                        span.style.animationDelay = `${index * 0.05 + 0.5}s`;
+                        el.appendChild(span);
+                    });
+                });
+            },
+
+            // 7. Card Effects
+            handleCardGlow(e) {
+                const card = e.currentTarget;
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--x', `${x}px`);
+                card.style.setProperty('--y', `${y}px`);
+            },
+            handleCardTilt(e) {
+                const card = e.currentTarget;
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                const rotateX = -y / 20;
+                const rotateY = x / 20;
+                card.style.setProperty('--rotateX', `${rotateX}deg`);
+                card.style.setProperty('--rotateY', `${rotateY}deg`);
+            },
+            resetCardTilt(e) {
+                const card = e.currentTarget;
+                card.style.setProperty('--rotateX', '0deg');
+                card.style.setProperty('--rotateY', '0deg');
+            },
+            
+            // 8. Portfolio Filter
+            filterPortfolio(e) {
+                const filter = e.target.dataset.filter;
+                this.ui.filterButtons.forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+
+                this.ui.portfolioItems.forEach(item => {
+                    item.classList.add('hidden');
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        setTimeout(() => item.classList.remove('hidden'), 10);
+                    }
+                });
+            },
+
+            // 9. Testimonial Slider
+            initTestimonialSlider() {
+                if (!this.ui.sliderWrapper || this.slider.totalSlides === 0) return;
+                this.updateSlide();
+                this.startSliderAutoplay();
+            },
+            updateSlide() {
+                this.ui.sliderWrapper.style.transform = `translateX(-${this.slider.currentIndex * 100}%)`;
+            },
+            moveSlide(direction) {
+                if (this.slider.totalSlides === 0) return;
+                if (direction === 'next') {
+                    this.slider.currentIndex = (this.slider.currentIndex + 1) % this.slider.totalSlides;
+                } else {
+                    this.slider.currentIndex = (this.slider.currentIndex - 1 + this.slider.totalSlides) % this.slider.totalSlides;
+                }
+                this.updateSlide();
+            },
+            startSliderAutoplay() {
+                this.slider.autoplayInterval = setInterval(() => {
+                    this.moveSlide('next');
+                }, 5000);
+            },
+            resetSliderAutoplay() {
+                clearInterval(this.slider.autoplayInterval);
+                this.startSliderAutoplay();
+            }
+        };
+
+        App.init();
+    });
+    </script>
+</body>
+</html>
